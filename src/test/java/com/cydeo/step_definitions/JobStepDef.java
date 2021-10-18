@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 
 public class JobStepDef {
 
-
     @Given("student attend all the classes")
     public void student_attend_all_the_classes() {
         System.out.println("Given code goes here :student attend all the classes");
@@ -19,8 +18,6 @@ public class JobStepDef {
     public void student_should_be_ready_for_the_job() {
         System.out.println("Then code goes here :student should be ready for the job");
     }
-
-
     @Given("student is prepared")
     public void student_is_prepared() {
         System.out.println("Given student is prepared");
@@ -33,7 +30,6 @@ public class JobStepDef {
     public void student_will_be_in_the_market() {
         System.out.println("Then student will be in the market");
     }
-
 
     @Given("you are prepared for a job")
     public void you_are_prepared_for_a_job() {
@@ -58,7 +54,5 @@ public class JobStepDef {
         System.out.println("THEN YOU SHOULD GET THE JOB ");
 
     }
-
-
 
 }

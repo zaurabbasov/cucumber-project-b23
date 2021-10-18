@@ -1,12 +1,15 @@
 package com.cydeo.pages;
 
+import com.cydeo.utility.BrowserUtil;
 import com.cydeo.utility.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WAllProductPage {
 
@@ -33,23 +36,43 @@ public class WAllProductPage {
     // store all rows text value as List<String>
     public List<String> getAllHeaderText(){
 
-        List<String> allTextLst = new ArrayList<>();
+//        List<String> allTextLst = new ArrayList<>();
+//
+//        for (WebElement eachElement : allHeaderRowCells) {
+//            allTextLst.add(  eachElement.getText()  ) ;
+//        }
 
-        for (WebElement eachElement : allHeaderRowCells) {
-            allTextLst.add(  eachElement.getText()  ) ;
-        }
-
-        return allTextLst ;
+        return BrowserUtil.getAllText(  allHeaderRowCells );
     }
 
-    public static List<String> getAllText(List<WebElement> lstOfWebElements){
-        List<String> allTextLst = new ArrayList<>();
+    // eventually each row in expected result in step definition
+    // is represented as a map
+    // so one way to organize our method is
+    // just to get actual result as a map so we can do map to map comparision
 
-        for (WebElement eachElement : lstOfWebElements) {
-            allTextLst.add(eachElement.getText() );
+    public Map<String,String> getRowMapFromWebTable(){
+
+        // we want to create a map :
+        // - key as column name
+        // - value as cell value
+        Map<String,String> rowMap = new LinkedHashMap<>();
+
+        // how to get all headers    so we can use as key
+        List<String> allHeaders  =  BrowserUtil.getAllText(  allHeaderRowCells ) ;
+        // how to get all first row  so we can use as value
+        List<String> allFirstRow =  BrowserUtil.getAllText(  firstRowCells   ) ;
+
+//        // Grab first header and use as key , Grab first row first cell and use it as value
+//        rowMap.put(  allHeaders.get(0)   ,  allFirstRow.get(0) ) ;
+//        rowMap.put(  allHeaders.get(1)   ,  allFirstRow.get(1) ) ;
+//        rowMap.put(  allHeaders.get(2)   ,  allFirstRow.get(2) ) ;
+
+        for (int colIndex = 0; colIndex < allHeaders.size(); colIndex++) {
+            // go through each column and add column header as key and value as cell value
+            rowMap.put(  allHeaders.get(colIndex)   ,  allFirstRow.get(colIndex) ) ;
         }
-        return allTextLst;
-    }
 
+        return rowMap ;
+    }
 
 }

@@ -22,7 +22,7 @@ public class Driver {
      */
     public static WebDriver getDriver(){
         // read the browser type you want to launch from properties file
-        String browserName = com.cydeo.utility.ConfigReader.read("browser") ;
+        String browserName = ConfigReader.read("browser") ;
 
         if(obj == null){
 

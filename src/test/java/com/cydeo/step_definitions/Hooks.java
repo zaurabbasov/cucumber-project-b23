@@ -11,15 +11,18 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
+    // We can set up a hook class that contains
+    // methods that run before each scenario and after each scenario
+    // or even when we learn tags
+    // we can run certain code before and after each scenario that tagged with certain tag
     @Before("@ui")
     public void setupDriver(){
         System.out.println("THIS IS FROM @Before inside hooks class");
-        // set up implicit wait
+        // set up implicit wait or all the browser related set up
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
-
+        // maximize browser here if you wanted
         Driver.getDriver().manage().window().maximize();
     }
-
 
     @After("@ui")
     public void tearDown(Scenario scenario){
@@ -30,7 +33,7 @@ public class Hooks {
             TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
             byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 
-            scenario.attach(screenshot, "image/png","WHAT EVER YOU WANT ");
+            scenario.attach(screenshot, "image/png",scenario.getName());
 
         }
 
@@ -38,4 +41,5 @@ public class Hooks {
         Driver.closeBrowser();
 
     }
+
 }

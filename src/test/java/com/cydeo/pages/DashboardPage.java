@@ -7,30 +7,28 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DashboardPage {
 
+    // add 3 elements that hold numbers
+    // add @FindBy annotation
     @FindBy(id="user_count")
     private WebElement userCountElm ;
-
     @FindBy (id="book_count")
     private WebElement bookCountElm ;
-
     @FindBy (id="borrowed_books")
-    private WebElement borrowedrCountElm ;
+    private WebElement borrowedCountElm ;
 
+    // add constructor
     public DashboardPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
-
+        PageFactory.initElements(Driver.getDriver(), this);
     }
-
+    // add 3 methods for getting the numbers
     public String getUserCountText(){
-        return userCountElm.getText();
+        return userCountElm.getText() ;
     }
-
     public String getBookCountText(){
-        return userCountElm.getText();
+        return bookCountElm.getText();
     }
-
     public String getBorrowedBookCountText(){
-        return userCountElm.getText();
+        return borrowedCountElm.getText();
     }
 
 

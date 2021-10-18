@@ -1,12 +1,18 @@
 package com.cydeo.utility;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * A Utility class that load the keyvalue pair inside config.properties file
+ * into Properties object and provide single method called
+ * read to get the value out of the properties file we created.
+ */
 public class ConfigReader {
 
     // declare Properties object at class level so it can be accessible in static method
-    private static Properties properties = new Properties();
+    private  static  Properties properties = new Properties();
 
     // we want to only load the file once , so we can use static block
     static {

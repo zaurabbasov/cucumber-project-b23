@@ -8,19 +8,19 @@ import org.openqa.selenium.support.PageFactory;
 public class WCommonArea {
 
     @FindBy(id = "ctl00_logout")
-    public WebElement logoutLink;
+    public WebElement logoutLink ;
 
     @FindBy(linkText = "View all orders")
-    public WebElement viewAllOrderTab;
+    public WebElement viewAllOrderTab ;
 
     @FindBy(linkText = "View all products")
-    public WebElement viewAllProductTab;
+    public WebElement viewAllProductTab ;
 
     @FindBy(linkText = "Order")
-    public WebElement orderTab;
+    public WebElement orderTab ;
 
     public WCommonArea(){
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
 }
